@@ -1,0 +1,19 @@
+import pygame
+import random
+
+#CONSTANTS
+FPS = 60
+WINDOW_WIDTH = 400
+WINDOW_HEIGHT = 400
+PADDLE_WIDTH = 10
+PADDLE_HEIGHT = 60
+BALL_WIDTH = 10
+BALL_HEIGHT = 10
+PADDLE_SPEED = 2
+BALL_X_SPEED = 3
+BALL_Y_SPEED = 2
+WHITE = (255, 255, 255)
+BLACK = (0,0,0)
+
+#intit screen
+screen = pygame.display.set.mode(WINDOW_WIDTH, WINDOW_HEIGHT);
