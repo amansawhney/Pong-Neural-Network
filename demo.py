@@ -26,3 +26,13 @@ else:
 grad_buffer = { k: np.zeros_like(v) for k,v in model.iteritems()} #stores the gradient
 rmsprop_cache = {k: np.zeros_like(v) for k,v in model.iteritems()} #stores the value of a formula which is a set constent
 
+#activation function
+def sigmoid(x):
+    return 1.0 / (1.0 + np.exp(-x)) #squashing
+def prepro(I):
+    I = I[35:195] #croping the image
+    I = I[::2, ::2, 0] #downsample
+    I =[I==144] = 0 #erase background
+    I =[I=109] = 0
+    I[I !=0] = 1 #everything else is set to 1
+    return I.astype(np.float).ravel() #flatten
