@@ -36,3 +36,12 @@ def prepro(I):
     I =[I=109] = 0
     I[I !=0] = 1 #everything else is set to 1
     return I.astype(np.float).ravel() #flatten
+
+def discount_reward(r):
+    discount_r = np.zeros_like(r)
+    running_add = 0 #storing rewards
+    for t in reversed(xrange(0, r.size))
+        if r[t] !=0: running_add = 0
+        running_add = running_add * gamma + r[t]
+        discount_r[t] = running_add
+    return discount_r
