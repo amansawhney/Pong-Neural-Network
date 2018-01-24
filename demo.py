@@ -54,3 +54,12 @@ def policy_forward(x):
     return p, h #return problitiy of taking action 2 and hidenstate
 
 def policy_backward(eph, epdlogp):
+    #eph is array of intermidate states
+    dW2 = np.dot(eph.T, epdlogp).ravel() #calc d
+    dh = np.outer(epdlogp, model['W2'])
+    dh[eph <= 0] = 0
+    dW1 = np.dot(dh.T, eph)
+    return  {'W1': dW1, 'W2': dW2}
+
+env = gym.make('Pong-v0')
+observation = env.reset()
