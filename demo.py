@@ -45,3 +45,12 @@ def discount_reward(r):
         running_add = running_add * gamma + r[t]
         discount_r[t] = running_add
     return discount_r
+
+def policy_forward(x):
+    h = np.dot(model['W1'], x) #vector of values
+    h[h < 0] = 0 #Relu
+    logp = np.dot(model['W2'], h)
+    p = sigmoid(logp)
+    return p, h #return problitiy of taking action 2 and hidenstate
+
+def policy_backward(eph, epdlogp):
